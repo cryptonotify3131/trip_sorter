@@ -3,11 +3,13 @@ This project is to calculate the path from Starting Point to Destination
 
 ### How to test the code
 1. Enable the XAMPP Control Panel.
-2. Keyin [http://localhost/trip_sorter/](http://localhost/trip_sorter/ "Trip Sorter") to start the test
-3. To change the Starting Point and Destination, you may change it at index.php (line 3)
+2. Keyin [http://localhost/trip_sorter?from=XXX&to=XXX](http://localhost/trip_sorter?from=XXX&to=XXX "Trip Sorter") to start the test
+   a. 'from' = Starting Point
+   b. 'to' = Destination
+3. To change the 'from' and 'to' variable in URL to test other path
 
 ### How to add new Type of Transportation
-You may add new set of data to $boarding_card_set varaible in index.php (line 20)
+You may add new set of data to $boardingCardSet varaible in TripSorter.php (line 10)
 The data required for new data set is:
 1. 'from' = Starting Point
 2. 'to' = Destination
