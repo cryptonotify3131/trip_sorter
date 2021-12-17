@@ -1,35 +1,29 @@
-<?php
+<html>
+    <body>
+        <form>
+            <?php $cards = isset($_POST['cards']) ? $_POST['cards'] : '[{"from":"Madrid","to":"Barcelona","transport_type":"train","transport_number":"78A","seat":"45B"},{"from":"Stockholm","to":"New York","transport_type":"flight","transport_number":"SK22","seat":"7B"},{"from":"Gerona","to":"Stockholm","transport_type":"flight","transport_number":"SK455","seat":"3A"},{"from":"Barcelona","to":"Gerona","transport_type":"airport bus","transport_number":"","seat":""}]'; ?>
+            Cards (JSON format) : <br>
+            <textarea id="txtCards" name="txtCards" rows="10" cols="50"><?= $cards ?></textarea><br>
+            <button type="button" onclick="showPath()">Submit</button>
+        </form>
+        <br>
+        Description: <b><div id="txtDesc"></div></b>
 
-include "TripSorter.php";
+    </body>
 
-$cards = isset($_POST['cards']) ? $_POST['cards'] : "";
-
-if(!$cards) {
-    echo "'cards' variable is required";
-    exit();
-}
-
-$response = (new TripSorter)->getPath(json_decode($cards, true));
-
-
-if($response['path']) {
-    foreach($response['path'] as $row) {
-        echo "Take " . $row['transport_type'] . ($row['transport_number'] ? (" (No. " . $row['transport_number'] . ") ") : "") . 
-        "from " . $row['from'] . " to " . $row['to'] .
-        ($row['seat'] ? (", seat in " . $row['seat']) : "") . ". \n";
-    }
-} else {
-    echo "No path found";
-}
-
-if($response['cards']) {
-    echo "\nBelow boarding cards unable to sorting\n";
-    foreach($response['cards'] as $row) {
-        echo "- From " . $row['from'] . " to " . $row['to'] . " with transport " . $row['transport_type'] . 
-        ($row['transport_number'] ? (" (No. " . $row['transport_number'] . ")") : "") . 
-        ($row['seat'] ? (", seat " . $row['seat']) : "") . ". \n";
-    }
-}
-
-
-?>
+    <script>
+        showPath();
+        function showPath() {
+            var cards = document.getElementById("txtCards").value;
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+                document.getElementById("txtDesc").innerHTML = this.responseText;
+            }
+            xhttp.open("POST", "main.php");
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("cards=" + cards);
+            
+        }
+    </script>
+</html>
