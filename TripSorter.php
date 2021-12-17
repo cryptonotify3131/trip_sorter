@@ -1,95 +1,52 @@
 <?php
 
 /**
- * TripSorter is a class that process to calculate the path from starting location to destination
+ * TripSorter is a class that process to sorting the borading cards path from starting location to destination
  * 
  * Class TripSorter
  */
 class TripSorter 
 {
-    private $boardingCardSet = [
-        [
-            'from' => 'Madrid',
-            'to' => 'Barcelona',
-            'transport_type' => 'train',
-            'transport_number' => '78A',
-            'seat' => '45B',
-        ],
-        [
-            'from' => 'Stockholm',
-            'to' => 'New York',
-            'transport_type' => 'flight',
-            'transport_number' => 'SK22',
-            'seat' => '7B',
-        ],
-        [
-            'from' => 'Gerona',
-            'to' => 'Stockholm',
-            'transport_type' => 'flight',
-            'transport_number' => 'SK455',
-            'seat' => '3A',
-        ],
-        [
-            'from' => 'Barcelona',
-            'to' => 'Gerona',
-            'transport_type' => 'airport bus',
-            'transport_number' => '',
-            'seat' => '',
-        ],
-    ];
-
     /** 
-     * @param string $from starting point
-     * @param string $to destination
+     * @param array $cards collection of unsorted boarding cards
      * @return array the path from starting point to destination
      */
-    public function getPath($from, $to) 
+    public function getPath($cards) 
     {
-        return $this->calculatePath($from, $to);
+        return $this->arragePath($cards);
     }
 
     /** 
-     * To calculate the path that form starting point to destination
+     * To sorting the borading cards path form starting point to destination
      * 
-     * @param string $from starting point
-     * @param string $to destination
-     * @param array $path to store current path
-     * @return array the path from starting point to destination, return empty array [] if path not found
+     * @param array $cards collection of unsorted boarding cards
+     * @param array $path collection of sorted boarding cards
+     * @return array the path from starting point to destination
      * @access private
      */
-    private function calculatePath($from, $to, $path = []) 
+    private function arragePath($cards, $path = []) 
     {
-        $lastPath = end($path);
-        $lastTo = isset($lastPath['to']) ? $lastPath['to'] : $from;
-
         if($path) {
-            $destinationList = array_merge(array_column($path, 'from'), array_column($path, 'to'));
+            $start = end($path)['to'];
         } else {
-            $destinationList = [];
+            $start = array_diff(array_column($cards, 'from'), array_column($cards, 'to'));
+            $start = $start ? $start[0] : $cards[0]['from'];
         }
-
-        $nextPath = [];
         
-        foreach ($this->boardingCardSet as $row) {
-            // To prevent back to previous destination
-            if (!in_array($to, $destinationList)) {
-                if ($row['from'] == $lastTo) {
-                    $nextPath = $row;
+        if($cards) {
+            foreach ($cards as $key => $row) {
+                if ($row['from'] == $start) {
+                    $path[] = $row;
+                    unset($cards[$key]);
+                    return $this->arragePath($cards, $path);
                 }
             }
-
-            if ($row['from'] == $lastTo && $row['to'] == $to) {
-                $path[] = $row;
-                return $path;
-            }
         }
 
-        if ($nextPath) {
-            $path[] = $nextPath;
-            return $this->calculatePath($lastTo, $to, $path);
-        }
-
-        return [];
+        return [
+            'cards' => $cards,
+            'path' => $path
+        ];
     }
 }
 ?>
