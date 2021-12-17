@@ -14,9 +14,9 @@ $response = (new TripSorter)->getPath(json_decode($cards, true));
 
 if($response['path']) {
     foreach($response['path'] as $row) {
-        echo "From " . $row['from'] . " to " . $row['to'] . " with transport " . $row['transport_type'] . 
-        ($row['transport_number'] ? (" (No. " . $row['transport_number'] . ")") : "") . 
-        ($row['seat'] ? (", seat " . $row['seat']) : "") . ". \n";
+        echo "Take " . $row['transport_type'] . ($row['transport_number'] ? (" (No. " . $row['transport_number'] . ") ") : "") . 
+        "from " . $row['from'] . " to " . $row['to'] .
+        ($row['seat'] ? (", seat in " . $row['seat']) : "") . ". \n";
     }
 } else {
     echo "No path found";
