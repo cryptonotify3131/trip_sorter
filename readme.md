@@ -5,7 +5,7 @@ This project is to calculate the path from Starting Point to Destination
 1. Enable the XAMPP Control Panel.
 3. Please use POST method for execute this URL, [http://localhost/trip_sorter/](http://localhost/trip_sorter/ "Trip Sorter")
 2. Parameter request:<br />
-   a. 'card' = json format of the unordered cards<br />
+   a. 'cards' = json format of the unordered cards<br />
                Info in each set of cards data<br />
                i.   'from' = Starting Point<br />
                ii.  'to' = Destination<br />
