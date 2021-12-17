@@ -14,5 +14,5 @@ The data required for new data set is:
 1. 'from' = Starting Point
 2. 'to' = Destination
 3. 'transport_type' = Type of Transportation, eg: 'train', 'bus', 'flight'
-4. 'transport_number' => Plate Number/ Flight Number for Transportation, may left blank if no Plate Number/ Flight Number
-5. 'seat' => Seat No, may left blank if no Seat No. or no arrangement
+4. 'transport_number' => Plate Number/ Flight Number for Transportation, may leave blank if no Plate Number/ Flight Number
+5. 'seat' => Seat No, may leave blank if no Seat No. or no arrangement
