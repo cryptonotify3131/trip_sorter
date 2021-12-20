@@ -1,16 +1,16 @@
 # TRIP SORTER
-This project is to calculate the path from Starting Point to Destination
+This project is to sorting the path from Starting Point to Destination<br />
+Here is sample page: [http://localhost/trip_sorter/](http://localhost/trip_sorter/ "Trip Sorter Page")
 
 ### How to test the code
-1. Enable the XAMPP Control Panel.
-2. Please use POST method for execute this URL, [http://localhost/trip_sorter/main.php](http://localhost/trip_sorter/main.php "Trip Sorter")
-3. Parameter request:<br />
-   a. 'cards' = json format of the unordered cards<br />
-               Info in each set of cards data<br />
-               i.   'from' = Starting Point<br />
-               ii.  'to' = Destination<br />
-               iii. 'transport_type' = Type of Transportation, eg: 'train', 'bus', 'flight'<br />
-               iv.  'transport_number' => Plate Number/ Flight Number for Transportation, may leave blank if no Plate Number/ Flight Number<br />
-               v.   'seat' => Seat No, may leave blank if no Seat No. or no arrangement<br />
-   b. Example for 'cards' variable = <b> [{"from":"Madrid","to":"Barcelona","transport_type":"train","transport_number":"78A","seat":"45B"},{"from":"Stockholm","to":"New York","transport_type":"flight","transport_number":"SK22","seat":"7B"},{"from":"Gerona","to":"Stockholm","transport_type":"flight","transport_number":"SK455","seat":"3A"},{"from":"Barcelona","to":"Gerona","transport_type":"airport bus","transport_number":"","seat":""}] </b>
-4. Here is sample page: [http://localhost/trip_sorter/](http://localhost/trip_sorter/ "Trip Sorter Page")
+1. Please use API to this URL, [http://localhost/trip_sorter/main.php](http://localhost/trip_sorter/main.php "Trip Sorter"), to get the result
+
+### How to add new cards
+1. Please add new card in TipSorter/cards.json file
+2. Info in each set of cards data
+   - 'from' = Starting Point
+   - 'to' = Destination
+   - 'transport_type' = Type of Transportation, eg: 'train', 'bus', 'flight'
+   - 'transport_number' => Plate Number/ Flight Number for Transportation, may leave blank if no Plate Number/ Flight Number
+   - 'seat' => Seat No, may leave blank if no Seat No. or no arrangement
+
