@@ -1,0 +1,33 @@
+[
+    {
+        "from":"Madrid",
+        "to":"Barcelona",
+        "transport_type":"train",
+        "transport_number":"78A",
+        "seat":"45B"
+    },
+    {
+        "from":"Stockholm",
+        "to":"New York",
+        "transport_type":"flight",
+        "transport_number":"SK22",
+        "gate":"22",
+        "seat":"7B"
+    },
+    {
+        "from":"Gerona Airport",
+        "to":"Stockholm",
+        "transport_type":"flight",
+        "transport_number":"SK455",
+        "gate":"45B",
+        "bagagge_drop_counter":"344",
+        "seat":"3A"
+    },
+    {
+        "from":"Barcelona",
+        "to":"Gerona Airport",
+        "transport_type":"bus",
+        "transport_number":"",
+        "seat":""
+    }
+]
